@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.desafio.consumindoapi.dto.PapelDTO;
+import com.desafio.consumindoapi.exception.ConsumingErrorException;
 import com.desafio.consumindoapi.service.ConsumindoApiService;
 
 @RestController
@@ -20,7 +21,7 @@ public class ConsumindoApiController {
 	private ConsumindoApiService consumindoApiService;
 	
 	@GetMapping
-	public ResponseEntity<List<PapelDTO>> getPapeis(@RequestParam String nome) {
+	public ResponseEntity<List<PapelDTO>> getPapeis(@RequestParam String nome) throws ConsumingErrorException {
 		return ResponseEntity.ok(consumindoApiService.getPapeis(nome));
 	}
 	
